@@ -1,0 +1,143 @@
+html {
+    background-image: url(../img/fondoPHP.jpg);
+}
+
+body {
+    margin: 0;
+    padding-bottom: 3rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.headerIndex {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/fondoHeader.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header h2 {
+    text-align: center;
+    padding-top: 10%;
+    font-size: 3.5rem;
+    color: beige;
+}
+
+nav {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+nav a:last-of-type {
+    padding-right: 2rem;
+}
+.enlaces {
+    display: flex;
+    gap: 1rem;
+}
+
+.logo img {
+    width: 3rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+}
+
+a{
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: bold;
+    
+}
+a:hover {
+    transform: scale(1.05);
+}
+
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+}
+
+td {
+    border: 1px solid black;
+    width: 10rem;
+}
+tr {
+    height: 3rem;
+    text-align: center;
+    background-color: rgb(238, 228, 216);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+tr:first-of-type {
+    background-color: #8a2be2;
+    font-weight: bold;
+    
+}
+
+/* Estilos Formulario */
+
+form {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 25rem;
+    background-color: orange;
+    margin-top: 2rem;
+    border: 2px solid black;
+    
+}
+
+.campos {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    height: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+
+.cabeceraForm {
+    color: black;
+    text-align: center;
+}
+
+fieldset h4 {
+    color: #8a2be2;
+    margin-bottom: 15px;
+}
+
+fieldset {
+    border: none;
+}
+
+button {
+    padding: .5rem;
+    background-color: #8a2be2;
+    border: 1px solid black;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Edicion */
+
+.enlaceEdit {
+    width: 2rem;
+    padding-right: .5rem;
+}
+
+.enlaceEdit:first-child {
+    padding-left: .3rem ;
+}
+
+.margenTablas {
+    margin-top: 2rem;
+}
