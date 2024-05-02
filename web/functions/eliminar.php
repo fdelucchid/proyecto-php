@@ -1,4 +1,13 @@
 <?php
+/**
+ * En este script a través de la obtención del id del profesor individual por la variable de la URL obtenida en el script tablaEditar.php, eliminaremos su registros de 
+ * la BD y mostraremos un mensaje al usuario de verificación, tanto se salió bien, como si no.
+ * 
+ * Previo a esto nuevamente realizaremos la conexión a la BD
+ * 
+ * @package funcion-editar
+ */
+
 $enlace=mysqli_connect("localhost", "fran", "alumne", "proyecto_php");
 if (!$enlace) {
     echo "Error en la conexion a la base de datos: " . mysqli_connect_error();

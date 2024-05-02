@@ -1,4 +1,18 @@
 <?php
+/**
+ * En este script realizamos la creación de un formulario de metodo post, para editar los datos del registro seleccionado en el script de tablaEditar.php.
+ * 
+ * El formulario es para que el usuario pueda cambiar los datos visualmente, finalmente el envío redirige a la ultima fase para la edición del registro en el script
+ * de editar.php enviando nuevamente el id del profesor mediante una variable en la URL
+ * 
+ * Previo al formulario realizamos la conexión a la BD y la obtención de la variable pasada por URL, que será el id del profesor que desamos obtener. Mediante este,
+ * completaremos el formulario, obteniendo los datos específicos del profesor, haciendo una query en la que filtramos por este id obtenido y guardandolos en una variable
+ * de la que extraeremos los datos de cada columna y los mostraremos en el formulario.
+ * 
+ * @package funcion-editar
+ */
+
+// Conexión a la BD verificando que este sea satisfactoria
 $enlace=mysqli_connect("localhost", "fran", "alumne", "proyecto_php");
 if (!$enlace) {
     echo "Error en la conexion a la base de datos: " . mysqli_connect_error();
@@ -15,6 +29,7 @@ if (!$enlace) {
 </head>
 <body>
     <?php
+    // Obtencion de la variable de la URL y guardado de la información especfífica filtrando en la query por el id del profesor obtenido
     $codigo = $_GET['codigo_profe'];
     $resultado = mysqli_query($enlace, "SELECT * FROM profesor WHERE codigo_profe=$codigo");
     $registre = mysqli_fetch_array($resultado);

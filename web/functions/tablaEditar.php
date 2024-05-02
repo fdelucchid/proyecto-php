@@ -1,4 +1,12 @@
 <?php
+/**
+ * Script para crear una tabla con los registros de la base de datos a partir de una query a esta, generando enlaces para redirigir tambíen a los apartados de
+ * editar/borrar/visualizar estos registros individualmente
+ * 
+ * @package funcion-editar
+ */
+
+// Conexión a la BD verificando que este sea satisfactoria
 $enlace=mysqli_connect("localhost", "fran", "alumne", "proyecto_php");
 if (!$enlace) {
     echo "Error en la conexion a la base de datos: " . mysqli_connect_error();
@@ -31,6 +39,7 @@ if (!$enlace) {
     <table class="margenTablas">
     <tr><td>Nombre</td><td>Apellidos</td><td>Fecha_Nacimiento</td><td>Dirección</td><td>Teléfono</td><td>Acción</td></tr>
     <?php
+    // Query a la base de datos y bucle para la creacion de la tabla
     $resultado = mysqli_query($enlace, "SELECT * FROM profesor");
             while ( $registre = mysqli_fetch_array($resultado) ) {
                 echo "<tr>";
@@ -49,6 +58,7 @@ if (!$enlace) {
                 </td>";
                 echo "</tr>";
             }
+    // En la parte superior a este comentarios veremos los enlaces para las distintas opciones de edicion de los registros individuales con su redireccion especifica
     ?>
     </table>
 </body>

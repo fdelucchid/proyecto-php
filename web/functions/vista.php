@@ -1,4 +1,15 @@
 <?php
+/**
+ * En este script, visualizaremos el registro individual seleccionado en el script de tablaEditar.php, mediante la obtención de la variable de la URL que contiene el id
+ * del profesor específico. Este registro, lo mostraremos en una tabla formada por un bucle a partir de los datos específicos del profesor, obtenidos de una query,
+ * filtrando por el id del profesor obtenido.
+ * 
+ * Previo a esto realizaremos la conexión a la BD
+ * 
+ * @package funcion-visualizar
+ */
+
+// Conexión a la BD verificando que este sea satisfactoria
 $enlace=mysqli_connect("localhost", "fran", "alumne", "proyecto_php");
 if (!$enlace) {
     echo "Error en la conexion a la base de datos: " . mysqli_connect_error();
@@ -31,7 +42,9 @@ if (!$enlace) {
     <table class="margenTablas">
     <tr><td>Código_Profesor</td><td>Nombre</td><td>Apellidos</td><td>Fecha_Nacimiento</td><td>Dirección</td><td>Teléfono</td></tr>
     <?php
+    // Obtencion de la variable de la URL
     $codigo =  $_GET['codigo_profe'];
+    // Creación de la tabla a partir de los datos específicos del registro del profesor elegido
     $resultado = mysqli_query($enlace, "SELECT * FROM profesor WHERE codigo_profe = $codigo");
             while ( $registre = mysqli_fetch_array($resultado) ) {
                 echo "<tr>";

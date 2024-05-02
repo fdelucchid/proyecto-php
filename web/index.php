@@ -27,6 +27,12 @@
             <table>
             <tr><td>Nombre</td><td>Apellidos</td><td>Fecha_Nacimiento</td><td>Teléfono</td></tr>
             <?php
+            /**
+             * En este script realizamos una conexión con la base de datos y luego mediante una query obtenemos todos los registros, mostrando solamente algunas de las
+             * columnas de estos en formato de tabla
+             * 
+             * @package funcion-index
+             */
             $conector = mysqli_connect("localhost", "fran", "alumne", "proyecto_php");
             if (!$conector) {
                 echo "Error a la conexión: " . mysqli_connect_error();
