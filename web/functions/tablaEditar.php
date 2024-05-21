@@ -60,7 +60,7 @@ if (!$enlace) {
             }
     echo "</table>";
     echo "<table class='margenTablas'>";
-    echo "<tr><td>Nombre</td><td>Apellidos</td><td>Fecha_Nacimiento</td><td>Dirección</td><td>Teléfono</td><td>Acción</td></tr>";
+    echo "<tr><td>Nombre</td><td>Ciclo</td><td>Curso</td><td>nombre_profesor</td><td>apellidos_profesor</td><td>Acción</td></tr>";
     $resultado1 = mysqli_query($enlace, "SELECT a.nombre, a.ciclo, a.curso, p.nombre AS nombre_profesor, p.apellidos AS apellidos_profesor FROM asignaturas a
     LEFT JOIN profesor p ON p.codigo_profe = a.codigo_profe
     WHERE a.ciclo = 'ASIX' AND a.curso = 1");
