@@ -58,6 +58,29 @@ if (!$enlace) {
                 </td>";
                 echo "</tr>";
             }
+    echo "</table>";
+    echo "<table class='margenTablas'>";
+    echo "<tr><td>Nombre</td><td>Apellidos</td><td>Fecha_Nacimiento</td><td>Dirección</td><td>Teléfono</td><td>Acción</td></tr>";
+    $resultado1 = mysqli_query($enlace, "SELECT a.nombre, a.ciclo, a.curso, p.nombre AS nombre_profesor, p.apellidos AS apellidos_profesor FROM asignaturas a
+    LEFT JOIN profesor p ON p.codigo_profe = a.codigo_profe
+    WHERE a.ciclo = 'ASIX' AND a.curso = 1");
+            while ( $registre1 = mysqli_fetch_array($resultado1) ) {
+                echo "<tr>";
+                echo "<td>" . $registre1['nombre'] . "</td>";
+                echo "<td>" . $registre1['ciclo'] . "</td>";
+                echo "<td>" . $registre1['curso'] . "</td>";
+                echo "<td>" . $registre1['nombre_profesor'] . "</td>";
+                echo "<td>" . $registre1['apellidos_profesor'] . "</td>";
+                $edicion = "formEdicion.php?codigo_profe=" . $registre1['codigo_profe'];
+                $borrado = "eliminar.php?codigo_profe=" . $registre1['codigo_profe'];
+                $vista = "vista.php?codigo_profe=" . $registre1['codigo_profe'];
+                echo "<td>
+                <a href='/web/functions/$edicion' onclick='return confirm(\"¿Estás seguro de que deseas editar este registro?\")'><img src='../img/editar.png' alt='botonEditar' class='enlaceEdit'></a>
+                <a href='/web/functions/$vista'><img src='../img/vision.png' alt='botonVer' class='enlaceEdit'></a>
+                <a href='/web/functions/$borrado' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")'><img src='../img/borrar.png' alt='botonBorrar' class='enlaceEdit'></a>
+                </td>";
+                echo "</tr>";
+            }
     // En la parte superior a este comentarios veremos los enlaces para las distintas opciones de edicion de los registros individuales con su redireccion especifica
     ?>
     </table>
