@@ -92,11 +92,12 @@ if (!$enlace) {
 
     if ($_SESSION['usuario'] == 'admin') {
         echo "<table class='margenTablas'>";
-        echo "<tr><td>Nombre_Usuario</td></tr>";
+        echo "<tr><td>Nombre_Usuario</td><td>Añadir</td></tr>";
         $resultado2 = mysqli_query($enlace, "SELECT * FROM usuarios");
             while ( $registre = mysqli_fetch_array($resultado2) ) {
                 echo "<tr>";
                 echo "<td>" . $registre['nombre_usuario'] . "</td>";
+                echo "<td><a href='/web/functions/formAñadirUser.php' class='enlaceEdit' /><img src='../img/editar.png' alt='botonEditar' class='enlaceEdit'></td>";
                 echo "</tr>";
             }
     echo "</table>";
