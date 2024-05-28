@@ -11,7 +11,12 @@
  * 
  * @package funcion-editar
  */
+session_start();
 
+if (!$_SESSION['usuario']) {
+    header('Location: /web/functions/formLogin.php');
+    exit();
+}
 // Conexión a la BD verificando que este sea satisfactoria
 $enlace=mysqli_connect("localhost", "fran", "alumne", "proyecto_php");
 if (!$enlace) {
@@ -44,6 +49,7 @@ if (!$enlace) {
                 <a href="/web/index.php">Inicio</a>
                 <a href="/web/functions/formAñadir.php">Añadir</a>
                 <a href="/web/functions/tablaEditar.php">Editar</a>
+                <a href="/web/functions/logout.php">Cerrar Sesión</a>
             </div>
         </nav>
     </header>';

@@ -33,12 +33,19 @@ if (!$enlace) {
                 <a href="/web/index.php">Inicio</a>
                 <a href="/web/functions/formAñadir.php">Añadir</a>
                 <a href="/web/functions/tablaEditar.php">Editar</a>
+                <a href="/web/functions/logout.php">Cerrar Sesión</a>
             </div>
         </nav>
     </header>
     <table class="margenTablas">
     <tr><td>Nombre</td><td>Apellidos</td><td>Fecha_Nacimiento</td><td>Dirección</td><td>Teléfono</td><td>Acción</td></tr>
     <?php
+    session_start();
+            
+    if (!$_SESSION['usuario']) {
+        header('Location: /web/functions/formLogin.php');
+        exit();
+    }
     // Query a la base de datos y bucle para la creacion de la tabla
     $resultado = mysqli_query($enlace, "SELECT * FROM profesor");
             while ( $registre = mysqli_fetch_array($resultado) ) {
@@ -82,6 +89,18 @@ if (!$enlace) {
                 echo "</tr>";
             }
     // En la parte superior a este comentarios veremos los enlaces para las distintas opciones de edicion de los registros individuales con su redireccion especifica
+
+    if ($_SESSION['usuario'] == 'admin') {
+        echo "<table class='margenTablas'>";
+        echo "<tr><td>Nombre_Usuario</td></tr>";
+        $resultado2 = mysqli_query($enlace, "SELECT * FROM usuarios");
+            while ( $registre = mysqli_fetch_array($resultado2) ) {
+                echo "<tr>";
+                echo "<td>" . $registre['nombre_usuario'] . "</td>";
+                echo "</tr>";
+            }
+    echo "</table>";
+    }
     ?>
     </table>
 </body>

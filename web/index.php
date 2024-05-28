@@ -18,6 +18,7 @@
                     <a href="/web/index.php">Inicio</a>
                     <a href="/web/functions/formAñadir.php">Añadir</a>
                     <a href="/web/functions/tablaEditar.php">Editar</a>
+                    <a href="/web/functions/logout.php">Cerrar Sesión</a>
                 </div>
             </nav>
             <h2>Registros del Instituto</h2>
