@@ -40,22 +40,43 @@ if (!$enlace) {
         </nav>
     </header>
     <table class="margenTablas">
-    <tr><td>Código_Profesor</td><td>Nombre</td><td>Apellidos</td><td>Fecha_Nacimiento</td><td>Dirección</td><td>Teléfono</td></tr>
+    
     <?php
     // Obtencion de la variable de la URL
     $codigo =  $_GET['codigo_profe'];
+    $codigo1 = $_GET['codigo_asig'];
+
+    if ($codigo !== null) {
     // Creación de la tabla a partir de los datos específicos del registro del profesor elegido
-    $resultado = mysqli_query($enlace, "SELECT * FROM profesor WHERE codigo_profe = $codigo");
-            while ( $registre = mysqli_fetch_array($resultado) ) {
-                echo "<tr>";
-                echo "<td>" . $registre['codigo_profe'] . "</td>";
-                echo "<td>" . $registre['nombre'] . "</td>";
-                echo "<td>" . $registre['apellidos'] . "</td>";
-                echo "<td>" . $registre['fecha_nacimiento'] . "</td>";
-                echo "<td>" . $registre['direccion'] . "</td>";
-                echo "<td>" . $registre['telefono'] . "</td>";
-                echo "</tr>";
-            }
+        echo "<tr><td>Código_Profesor</td><td>Nombre</td><td>Apellidos</td><td>Fecha_Nacimiento</td><td>Dirección</td><td>Teléfono</td></tr>";
+        $resultado = mysqli_query($enlace, "SELECT * FROM profesor WHERE codigo_profe = $codigo");
+                while ( $registre = mysqli_fetch_array($resultado) ) {
+                    echo "<tr>";
+                    echo "<td>" . $registre['codigo_profe'] . "</td>";
+                    echo "<td>" . $registre['nombre'] . "</td>";
+                    echo "<td>" . $registre['apellidos'] . "</td>";
+                    echo "<td>" . $registre['fecha_nacimiento'] . "</td>";
+                    echo "<td>" . $registre['direccion'] . "</td>";
+                    echo "<td>" . $registre['telefono'] . "</td>";
+                    echo "</tr>";
+                }
+    } else {
+        echo "<tr><td>Código_Asignatura</td><td>Nombre</td><td>Ciclo</td><td>Curso</td><td>nombre_profesor</td><td>apellidos_profesor</td><td>codigo_profesor</td></tr>";
+        $resultado = mysqli_query($enlace, "SELECT a.codigo_asig, a.nombre, a.ciclo, a.curso, p.nombre AS nombre_profesor, p.apellidos AS apellidos_profesor, a.codigo_profe FROM asignaturas a
+        LEFT JOIN profesor p ON p.codigo_profe = a.codigo_profe
+        WHERE codigo_asig = $codigo1");
+                while ( $registre = mysqli_fetch_array($resultado) ) {
+                    echo "<tr>";
+                    echo "<td>" . $registre['codigo_asig'] . "</td>";
+                    echo "<td>" . $registre['nombre'] . "</td>";
+                    echo "<td>" . $registre['ciclo'] . "</td>";
+                    echo "<td>" . $registre['curso'] . "</td>";
+                    echo "<td>" . $registre['nombre_profesor'] . "</td>";
+                    echo "<td>" . $registre['apellidos_profesor'] . "</td>";
+                    echo "<td>" . $registre['codigo_profe'] . "</td>";
+                    echo "</tr>";
+                }
+    }
     ?>
     </table>
 </body>

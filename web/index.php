@@ -33,6 +33,12 @@
              * 
              * @package funcion-index
              */
+            session_start();
+            
+            if (!$_SESSION['usuario']) {
+                header('Location: /web/functions/formLogin.php');
+                exit();
+            }
             $conector = mysqli_connect("localhost", "fran", "alumne", "proyecto_php");
             if (!$conector) {
                 echo "Error a la conexión: " . mysqli_connect_error();

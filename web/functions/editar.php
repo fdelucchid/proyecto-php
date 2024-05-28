@@ -28,14 +28,23 @@ if (!$enlace) {
     <?php
     // Obtencion de la variable de la URL
     $codigo =  $_GET['codigo_profe'];
-    // Modificación de los datos mediante la sentencia UPDATE filtrada por el id del profesor
-    $update = "UPDATE profesor SET nombre = '" . $_POST['nombre'] . "',
-    apellidos = '" . $_POST['apellidos'] . "',
-    fecha_nacimiento = '" . $_POST['fecha_nacimiento'] . "',
-    direccion = '" . $_POST['direccion'] . "',
-    telefono = '" . $_POST['telefono'] . "'
-    WHERE codigo_profe=$codigo";
+    $codigo1 =  $_GET['codigo_asig'];
 
+    // Modificación de los datos mediante la sentencia UPDATE filtrada por el id del profesor
+    if ($codigo !== null) {
+        $update = "UPDATE profesor SET nombre = '" . $_POST['nombre'] . "',
+        apellidos = '" . $_POST['apellidos'] . "',
+        fecha_nacimiento = '" . $_POST['fecha_nacimiento'] . "',
+        direccion = '" . $_POST['direccion'] . "',
+        telefono = '" . $_POST['telefono'] . "'
+        WHERE codigo_profe=$codigo";
+    } else {
+        $update = "UPDATE asignaturas SET nombre = '" . $_POST['nombre'] . "',
+        ciclo = '" . $_POST['ciclo'] . "',
+        curso = '" . $_POST['curso'] . "',
+        codigo_profe = '" . $_POST['codigo_profe'] . "'
+        WHERE codigo_asig=$codigo1";
+    }
     // Verificación para el usuario de la correcta actualización de los datos
     $resultado = mysqli_query($enlace, $update);
     if (!$resultado) {

@@ -61,7 +61,7 @@ if (!$enlace) {
     echo "</table>";
     echo "<table class='margenTablas'>";
     echo "<tr><td>Nombre</td><td>Ciclo</td><td>Curso</td><td>nombre_profesor</td><td>apellidos_profesor</td><td>Acción</td></tr>";
-    $resultado1 = mysqli_query($enlace, "SELECT a.nombre, a.ciclo, a.curso, p.nombre AS nombre_profesor, p.apellidos AS apellidos_profesor FROM asignaturas a
+    $resultado1 = mysqli_query($enlace, "SELECT a.codigo_asig, a.nombre, a.ciclo, a.curso, p.nombre AS nombre_profesor, p.apellidos AS apellidos_profesor FROM asignaturas a
     LEFT JOIN profesor p ON p.codigo_profe = a.codigo_profe
     WHERE a.ciclo = 'ASIX' AND a.curso = 1");
             while ( $registre1 = mysqli_fetch_array($resultado1) ) {
@@ -71,13 +71,13 @@ if (!$enlace) {
                 echo "<td>" . $registre1['curso'] . "</td>";
                 echo "<td>" . $registre1['nombre_profesor'] . "</td>";
                 echo "<td>" . $registre1['apellidos_profesor'] . "</td>";
-                $edicion = "formEdicion.php?codigo_profe=" . $registre1['codigo_profe'];
-                $borrado = "eliminar.php?codigo_profe=" . $registre1['codigo_profe'];
-                $vista = "vista.php?codigo_profe=" . $registre1['codigo_profe'];
+                $edicion1 = "formEdicion.php?codigo_asig=" . $registre1['codigo_asig'];
+                $borrado1 = "eliminar.php?codigo_asig=" . $registre1['codigo_asig'];
+                $vista1 = "vista.php?codigo_asig=" . $registre1['codigo_asig'];
                 echo "<td>
-                <a href='/web/functions/$edicion' onclick='return confirm(\"¿Estás seguro de que deseas editar este registro?\")'><img src='../img/editar.png' alt='botonEditar' class='enlaceEdit'></a>
-                <a href='/web/functions/$vista'><img src='../img/vision.png' alt='botonVer' class='enlaceEdit'></a>
-                <a href='/web/functions/$borrado' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")'><img src='../img/borrar.png' alt='botonBorrar' class='enlaceEdit'></a>
+                <a href='/web/functions/$edicion1' onclick='return confirm(\"¿Estás seguro de que deseas editar este registro?\")'><img src='../img/editar.png' alt='botonEditar' class='enlaceEdit'></a>
+                <a href='/web/functions/$vista1'><img src='../img/vision.png' alt='botonVer' class='enlaceEdit'></a>
+                <a href='/web/functions/$borrado1' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\")'><img src='../img/borrar.png' alt='botonBorrar' class='enlaceEdit'></a>
                 </td>";
                 echo "</tr>";
             }

@@ -24,9 +24,13 @@ if (!$enlace) {
 <body>
     <?php
     $codigo =  $_GET['codigo_profe'];
-    $borrar = "DELETE FROM profesor WHERE codigo_profe = $codigo";
-
-    $resultado = mysqli_query($enlace, $borrar);
+    $codigo1 =  $_GET['codigo_asig'];
+    if ($codigo !== null) {
+        $borrar = "DELETE FROM profesor WHERE codigo_profe = $codigo";
+        $resultado = mysqli_query($enlace, $borrar);
+    } else {
+        $borrar = "DELETE FROM asignaturas WHERE codigo_profe = $codigo1";
+    }
     if (!$resultado) {
         echo "La eliminación del registro a tenido un problema";
         exit;
